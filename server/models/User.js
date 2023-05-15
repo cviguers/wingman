@@ -8,6 +8,11 @@ const userSchema = new Schema({
     unique: true,
     trim: true,
   },
+  img: {
+    data: Buffer,
+    contentType: String,
+    
+  },
   email: {
     type: String,
     required: true,
