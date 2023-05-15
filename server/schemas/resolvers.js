@@ -3,9 +3,9 @@ const { User, Post } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
-  // read query: get data from the server
+  // read query: read data from the server
   Query: {
-    // get all users and associated username
+    // get all users and populate their username
     users: async () => {
       return User.find().populate("username");
     },
@@ -38,7 +38,6 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-
     // login a user, sign a token, and send it back (to client/src/pages/login.js)
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -92,7 +91,7 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    // delete a post
+    // delete a post and update user to remove post from their profile
     removePost: async (parent, { postId }, context) => {
       if (context.user) {
         const post = await Post.findOneAndDelete({
@@ -109,7 +108,7 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
-    // update a post by deleting a comment
+    // delete a comment by updating a post
     removeComment: async (parent, { postId, commentId }, context) => {
       if (context.user) {
         return Post.findOneAndUpdate(
