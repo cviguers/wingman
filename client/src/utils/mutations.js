@@ -13,15 +13,15 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
-      token
-      user {
-        _id
-        username
-      }
+mutation AddUser($username: String!, $email: String!, $birdname: String!, $password: String!) {
+  addUser(username: $username, email: $email, birdname: $birdname, password: $password) {
+    token
+    user {
+      _id
+      username
     }
   }
+}
 `;
 
 export const ADD_POST = gql`
@@ -56,6 +56,9 @@ export const ADD_COMMENT = gql`
 `;
 
 export const REMOVE_POST = gql`
-mutation removePost($postId: ID!) {
-    
+mutation RemovePost($postId: ID!) {
+  removePost(postId: $postId) {
+    _id
+  }
+}
 `;
