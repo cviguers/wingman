@@ -42,7 +42,8 @@ const generateEntryData = async (name) => {
   }; 
 };
 
- // Seed the database with Users
+
+// Seed the database with Users
 const seedUsers = async (numUsers) => {
   const usedNames = [];
   const userData = [];
@@ -56,5 +57,25 @@ const seedUsers = async (numUsers) => {
   console.log(`Successfully seeded ${numUsers} users`);
 };
 
- // Seed users, insert how many
+// Seed users, insert how many
 seedUsers(10);
+
+//     for (let i = 0; i < postSeeds.length; i++) {
+//       const { _id, postAuthor } = await Post.create(postSeeds[i]);
+//       const user = await User.findOneAndUpdate(
+//         { username: postAuthor },
+//         {
+//           $addToSet: {
+//             post: _id,
+//           },
+//         }
+//       );
+//     }
+//   } catch (err) {
+//     console.error(err);
+//     process.exit(1);
+//   }
+
+//   console.log('seeded!');
+//   process.exit(0);
+// });

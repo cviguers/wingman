@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const userSchema = new Schema({
   birdname: {
     type: String,
+    required: true,
     unique: true,
     trim: true,
   },
@@ -15,6 +16,9 @@ const userSchema = new Schema({
   },
   img: {
     contentType: String,
+  },
+  quote: {
+    type: String,
   },
   email: {
     type: String,
