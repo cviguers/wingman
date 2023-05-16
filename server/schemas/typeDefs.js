@@ -1,9 +1,12 @@
 const { gql } = require("apollo-server-express");
 
+// queries to get data from db
 const typeDefs = gql`
   type User {
     _id: ID
+    birdname: String
     username: String
+    img: String
     email: String
     password: String
     posts: [Post]!

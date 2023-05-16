@@ -1,0 +1,36 @@
+.layout {
+    width: 1920px;
+    height: 1080px;
+    background-color: rgb(234, 128, 238);
+  
+    display: grid;
+    grid:
+      "header header header" auto
+      "leftSide body ." 1fr
+      "footer footer footer" auto
+      / 30% 1fr 0fr;
+    gap: 20px;
+  }
+  
+  .header { 
+   grid-area: header; 
+
+}
+  .leftSide { 
+   grid-area: leftSide; 
+   margin-top: 30%;
+   margin-left: 10%;
+   margin-right: 15%;
+}
+  .leftSide button {
+    background-color: white;
+    border: none;
+    padding: 15px 30px 15px 30px;
+    border-radius: 10px;
+    margin-top: 30px;
+  }
+  .body { 
+   grid-area: body; 
+   background-color: darkseagreen;
+}
+  .footer { grid-area: footer; }
