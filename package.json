@@ -1,22 +1,17 @@
 {
-  "name": "00-practice-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^11.1.8",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.4.0",
-    "bootstrap": "^5.2.3",
-    "dotenv": "^16.0.3",
-    "random-animals-pictures": "^1.0.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
-  },
   "name": "wingman",
   "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "gridfs-stream": "^1.1.1",
+    "mongoose": "^7.1.1",
+    "multer": "^1.4.4",
+    "multer-gridfs-storage": "^5.0.2",
+    "random-animals-api": "^1.2.6",
+    "random-animals-pictures": "^1.0.1"
+  },
   "description": "",
   "main": "server/server.js",
   "scripts": {
@@ -30,14 +25,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^5.1.0"
-  },
-  "dependencies": {
-    "dotenv": "^16.0.3",
-    "express": "^4.18.2",
-    "gridfs-stream": "^1.1.1",
-    "mongoose": "^7.1.1",
-    "multer": "^1.4.4",
-    "multer-gridfs-storage": "^5.0.2"
+    "concurrently": "^5.1.0",
+    "typescript": "^5.0.4"
   }
 }
