@@ -3,11 +3,11 @@ const { User, Post } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
-  // read query: read data from the server
+  // read data from the db
   Query: {
-    // get all users and populate their username
+    // get all users and populate their username and img
     users: async () => {
-      return User.find().populate("username");
+      return User.find({}).populate("birdname").populate("img");
     },
     // get a user by username and populate that user's posts
     user: async (parent, { username }) => {
@@ -30,14 +30,16 @@ const resolvers = {
       throw new AuthenticationError("You need to be logged in!");
     },
   },
-  // create/update/delete mutation: adjust data in the server
+  // create/update/delete data in the db
   Mutation: {
     // create a user, sign a token, and send it back (to client/src/pages/signup.js)
     addUser: async (parent, { username, email, password }) => {
       const user = await User.create({ username, email, password });
+      // generate jwt token and sign it for new user
       const token = signToken(user);
       return { token, user };
     },
+
     // login a user, sign a token, and send it back (to client/src/pages/login.js)
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
@@ -51,7 +53,7 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials");
       }
-
+      // generate jwt token and sign it for new user
       const token = signToken(user);
 
       return { token, user };

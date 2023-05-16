@@ -19,6 +19,8 @@ const postSchema = new Schema({
     default: Date.now,
     get: (timestamp) => dateFormat(timestamp),
   },
+  
+  // create comments array to allow comments on posts
   comments: [
     {
       commentText: {
