@@ -25,7 +25,12 @@ db.once('open', async () => {
   } catch (err) {
     console.error(err);
     process.exit(1);
-=======
+  }
+
+  console.log('seeded!');
+  process.exit(0);
+});
+
 // const Profile = require('../models/User');
 // const animals = require('random-animals-pictures');
 // const fetch = require('node-fetch');
@@ -62,10 +67,3 @@ db.once('open', async () => {
 
 //  // Seed profiles, insert how many
 // seedProfiles(10);
-
-// <<<<<<< ctv05
-//   console.log('seeded!');
-//   process.exit(0);
-// });
-// =======
-// >>>>>>> main
