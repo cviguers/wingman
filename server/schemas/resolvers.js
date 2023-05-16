@@ -33,8 +33,8 @@ const resolvers = {
   // create/update/delete data in the db
   Mutation: {
     // create a user, sign a token, and send it back (to client/src/pages/signup.js)
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, { username, email, password, birdname }) => {
+      const user = await User.create({ username, email, password, birdname });
       // generate jwt token and sign it for new user
       const token = signToken(user);
       return { token, user };
