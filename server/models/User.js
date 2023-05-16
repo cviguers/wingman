@@ -2,6 +2,11 @@ const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
+  birdname: {
+    type: String,
+    unique: true,
+    trim: true,
+  },
   username: {
     type: String,
     required: true,
@@ -9,9 +14,7 @@ const userSchema = new Schema({
     trim: true,
   },
   img: {
-    data: Buffer,
     contentType: String,
-    
   },
   email: {
     type: String,
@@ -24,6 +27,7 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  // create relationship between user and posts
   posts: [
     {
       type: Schema.Types.ObjectId,
@@ -32,6 +36,7 @@ const userSchema = new Schema({
   ],
 });
 
+// set up pre-save middleware to create password
 userSchema.pre('save', async function (next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
@@ -41,6 +46,7 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
+// compare the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
