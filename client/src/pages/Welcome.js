@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
 import '../component styles/welcome.css';
-
+import Popup from '../components/Popup.js';
 
 const Welcome = () => {
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const carouselImages = document.querySelectorAll('.c-img');
@@ -22,11 +23,17 @@ const Welcome = () => {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+  
+    const togglePopup = () => {
+      setShowPopup(!showPopup);
+  };
+  
+  
 
   return (
     <section className='layout'>
           <div className="header">
-            <img src="./P3-logo.png" alt="wingman logo"/>
+            <img src="../imgs/P3-logo.png" alt="wingman logo"/>
             <button>Sign in</button>
           </div>
           <div className="leftSide">
@@ -36,14 +43,14 @@ const Welcome = () => {
             <p>Looking to nest down for the long haul?</p>
             <p>Looking for an easy breezy flit?</p>
             <p>WINGMAN has you covered</p>
-            <button>JOIN WINGMAN TODAY</button>
+            <button onClick={togglePopup}>JOIN WINGMAN TODAY</button>
           </div>
           <div className="content">
             <div className="image-carousel">
-                <img className="active c-img" src="./yellow-bird.png" alt="yellowBird"/>
-                <img className="c-img" src="./eagle.png" alt="eagle"/>
-                <img className="c-img" src="./bird-of-paradise.png" alt="BoP"/>
-                <img className="c-img" src="./gull.png" alt="gull"/>
+                <img className="active c-img" src="../imgs/yellow-bird.png" alt="yellowBird"/>
+                <img className="c-img" src="../imgs/eagle.png" alt="eagle"/>
+                <img className="c-img" src="../imgs/bird-of-paradise.png" alt="BoP"/>
+                <img className="c-img" src="../imgs/gull.png" alt="gull"/>
               </div>
           </div>
           <div className="footer1">
@@ -62,14 +69,14 @@ const Welcome = () => {
                     <p>- Chic Ken</p>
                 </li>
                 <li>
-                    <h1>“I’m so glad that I took the chance with 
+                    <h1>“Im so glad that I took the chance with 
                         WINGMAN! I found the love of my Squack ”</h1>
                     <span></span>
                     <p>- Ruffles the Parrot</p>
                 </li>
             </ul>
           </div>
-
+          {showPopup && <Popup onClose={togglePopup} />} {/* Render the Popup component conditionally based on showPopup state */}
     </section>
   );
 }
