@@ -11,21 +11,21 @@ const resolvers = {
     },
     // get a user by username and populate that user's posts
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate("posts");
+      return User.findOne({ username }).populate("birdname").populate("username").populate("img").populate("quote").populate("posts");
     },
     // get all posts and populate those posts with their comments, sort by newest
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Post.find(params).sort({ createdAt: -1 });
+      return Post.find(params).sort({ createdAt: -1 }).populate("createdAt").populate("postAuthor").populate("postText");
     },
     // get a single post by id
     post: async (parent, { postId }) => {
-      return Post.findOne({ _id: postId });
+      return Post.findOne({ _id: postId }).populate("createdAt").populate("postAuthor").populate("postText").populate("comments").populate("commentText").populate("commentAuthor");
     },
     // show the logged in user's profile and populate their posts
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate("posts");
+        return User.findOne({ _id: context.user._id }).populate("birdname").populate("username").populate("img").populate("quote").populate("posts");
       }
       throw new AuthenticationError("You need to be logged in!");
     },
@@ -33,8 +33,8 @@ const resolvers = {
   // create/update/delete data in the db
   Mutation: {
     // create a user, sign a token, and send it back (to client/src/pages/signup.js)
-    addUser: async (parent, { username, email, password }) => {
-      const user = await User.create({ username, email, password });
+    addUser: async (parent, { username, email, password, birdname }) => {
+      const user = await User.create({ username, email, password, birdname });
       // generate jwt token and sign it for new user
       const token = signToken(user);
       return { token, user };

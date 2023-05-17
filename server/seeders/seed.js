@@ -58,3 +58,25 @@ const seedUsers = async (numUsers) => {
 
  // Seed users, insert how many
 seedUsers(10);
+
+
+
+//     for (let i = 0; i < postSeeds.length; i++) {
+//       const { _id, postAuthor } = await Post.create(postSeeds[i]);
+//       const user = await User.findOneAndUpdate(
+//         { username: postAuthor },
+//         {
+//           $addToSet: {
+//             post: _id,
+//           },
+//         }
+//       );
+//     }
+//   } catch (err) {
+//     console.error(err);
+//     process.exit(1);
+//   }
+
+//   console.log('seeded!');
+//   process.exit(0);
+// });
