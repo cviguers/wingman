@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
+// import "../componentStyles/birdProfile.css";
 
 import { ADD_POST } from "../../utils/mutations";
 import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
@@ -68,16 +69,16 @@ const PostForm = () => {
 
   return (
     <div>
-      <h3>post toast</h3>
+      <h3>Add A Comment!</h3>
 
       {Auth.loggedIn() ? (
         // if the user is logged in
         <>
           <form
-            className="flex-row justify-center justify-space-between-md align-center"
+            className="flex-row justify-center justify-space-between-md align-center margin-right: 100px"
             onSubmit={handleFormSubmit}
           >
-            <div className="col-12 col-lg-9">
+            <div className="col-12 col-lg-9 ">
               <textarea
                 name="postText"
                 placeholder="chirp away!"
@@ -96,7 +97,7 @@ const PostForm = () => {
             </p>
 
             <div className="col-12 col-lg-3">
-              <button className="btn btn-primary btn-block py-3" type="submit">
+              <button className="pst-btn" type="submit">
                 submit
               </button>
             </div>
