@@ -80,10 +80,13 @@
   .profile-details p {
     font-size: 16px;
     color: rgb(255, 255, 255);
+    margin-right: 200px;
+    line-height: 20px;
   }
 
   .upd-btn {
-    background-color: rgb(251, 141, 255);
+    background-color: rgb(255, 255, 255);
+    color: rgb(251, 141, 255);
     border: none;
     align-items: right !important;
     width: 200px;
@@ -92,8 +95,9 @@
     font-style: normal;
     padding: 15px 30px 15px 30px;
     border-radius: 10px;
-    margin-top: 100px;
+    margin-top: 10px;
     margin-left: 0px;
+    margin-right: 200px;
   }
 
   .pst-btn {
