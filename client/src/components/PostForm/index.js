@@ -10,8 +10,6 @@ import Auth from "../../utils/auth";
 const PostForm = () => {
   // state for the text of the post
   const [postText, setPostText] = useState("");
-  const [postAuthor, setPostAuthor] = useState("");
-
 
   // state for counting the characters in the post
   const [characterCount, setCharacterCount] = useState(0);
@@ -90,12 +88,12 @@ const PostForm = () => {
               ></textarea>
             </div>
             <p
-            className={`m-0 ${
-              characterCount === 280 || error ? "text-danger" : ""
-            }`}
-          >
-            Character Count: {characterCount}/280
-          </p>
+              className={`m-0 ${
+                characterCount === 280 || error ? "text-danger" : ""
+              }`}
+            >
+              Character Count: {characterCount}/280
+            </p>
 
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">

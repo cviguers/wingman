@@ -55,68 +55,54 @@ const Signup = () => {
   }; // function for handling the form submission
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header p-2">Sign Up</h4>
-          <div className="card-body">
-            {data ? (
-              // if there is data (successful signup)
-              <p>
-                Success! You may now head{" "}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
-              // if there is no data (signup form)
-              <form onSubmit={handleFormSubmit}>
-                <input
-                  className="form-input"
-                  placeholder="enter your username"
-                  name="username"
-                  type="text"
-                  value={formState.name}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="enter your email"
-                  name="email"
-                  type="email"
-                  value={formState.email}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="enter your name"
-                  name="birdname"
-                  type="text"
-                  value={formState.birdname}
-                  onChange={handleChange}
-                />
-                <input
-                  className="form-input"
-                  placeholder="enter your password"
-                  name="password"
-                  type="password"
-                  value={formState.password}
-                  onChange={handleChange}
-                />
-                <button
-                  className="btn btn-block btn-primary"
-                  style={{ cursor: "pointer" }}
-                  type="submit"
-                >
-                  submit
-                </button>
-              </form>
-            )}
+    <main>
+      <h4>Sign Up</h4>
+      <div>
+        {data ? (
+          // if there is data (successful signup)
+          <p>
+            you're logged in! you can fly back{" "}
+            <Link to="/">to the homepage here.</Link>
+          </p>
+        ) : (
+          // if there is no data (signup form)
+          <form onSubmit={handleFormSubmit}>
+            <input
+              placeholder="enter your username"
+              name="username"
+              type="text"
+              value={formState.name}
+              onChange={handleChange}
+            />
+            <input
+              placeholder="enter your email"
+              name="email"
+              type="email"
+              value={formState.email}
+              onChange={handleChange}
+            />
+            <input
+              placeholder="enter your name"
+              name="birdname"
+              type="text"
+              value={formState.birdname}
+              onChange={handleChange}
+            />
+            <input
+              placeholder="enter your password"
+              name="password"
+              type="password"
+              value={formState.password}
+              onChange={handleChange}
+            />
+            <button type="submit">submit</button>
+          </form>
+        )}
 
-            {error && (
-              // if there is an error
-              <div className="my-3 p-3">{error.message}</div>
-            )}
-          </div>
-        </div>
+        {error && (
+          // if there is an error
+          <div>{error.message}</div>
+        )}
       </div>
     </main>
   );
