@@ -10,6 +10,8 @@ import Auth from "../../utils/auth";
 const PostForm = () => {
   // state for the text of the post
   const [postText, setPostText] = useState("");
+  const [postAuthor, setPostAuthor] = useState("");
+
 
   // state for counting the characters in the post
   const [characterCount, setCharacterCount] = useState(0);
@@ -59,10 +61,10 @@ const PostForm = () => {
     const { name, value } = event.target;
 
     if (name === "postText" && value.length <= 280) {
-    // update the post text
-      setPostText(value); 
-    // update the character count
-      setCharacterCount(value.length); 
+      // update the post text
+      setPostText(value);
+      // update the character count
+      setCharacterCount(value.length);
     }
   };
 
@@ -73,13 +75,6 @@ const PostForm = () => {
       {Auth.loggedIn() ? (
         // if the user is logged in
         <>
-          <p
-            className={`m-0 ${
-              characterCount === 280 || error ? "text-danger" : ""
-            }`}
-          >
-            Character Count: {characterCount}/280
-          </p>
           <form
             className="flex-row justify-center justify-space-between-md align-center"
             onSubmit={handleFormSubmit}
@@ -94,6 +89,13 @@ const PostForm = () => {
                 onChange={handleChange}
               ></textarea>
             </div>
+            <p
+            className={`m-0 ${
+              characterCount === 280 || error ? "text-danger" : ""
+            }`}
+          >
+            Character Count: {characterCount}/280
+          </p>
 
             <div className="col-12 col-lg-3">
               <button className="btn btn-primary btn-block py-3" type="submit">

@@ -1,6 +1,7 @@
 import React from "react";
 import "../componentStyles/birdProfile.css";
 import { Link } from "react-router-dom";
+import PostForm from "../components/PostForm";
 
 const BirdProfile = () => {
   // Sample user data
@@ -46,6 +47,7 @@ const BirdProfile = () => {
           </div>
         </div>
         <button className="upd-btn">Add Comment</button>
+        <PostForm/>
       </div>
       
       <div className="footer1">
