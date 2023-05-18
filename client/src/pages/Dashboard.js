@@ -40,6 +40,9 @@ const Dashboard = () => {
         <Link to="/user-profile">
         <button className="ac-btn">Account</button>
         </Link>
+        <Link to="/dashboard">
+          <button className="db-btn">Dashboard</button>
+        </Link>
         <Link to="/">
         <button>Log out</button>
         </Link>

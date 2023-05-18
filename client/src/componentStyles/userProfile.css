@@ -38,6 +38,7 @@
 }
 
 .user-profile {
+  background-color: rgb(234, 128, 238);
     display: flex;
     flex-direction: column;
     padding: 20px;

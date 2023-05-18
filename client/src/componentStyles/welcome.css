@@ -51,6 +51,20 @@
   margin-top: 30px !important;
 }
 
+.db-btn{
+  background-color: rgb(255, 255, 255) !important;
+  border: none !important;
+  position: absolute !important;
+  right: 23.3% !important;
+  font-family: futura-pt, sans-serif !important;
+  font-size: large !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  padding: 15px 30px 15px 30px !important;
+  border-radius: 10px !important;
+  margin-top: 30px !important;
+}
+
   .leftSide { 
    background-color: rgb(234, 128, 238);
    grid-area: leftSide; 
