@@ -16,7 +16,7 @@ const userSchema = new Schema({
     trim: true,
   },
   img: {
-    contentType: String,
+    type: String,
   },
   quote: {
     type: String,
@@ -39,19 +39,19 @@ const userSchema = new Schema({
       ref: 'Post',
     },
   ],
-  Likes: [
+  likes: [
     {
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
   ],
-  LikedBy: [
+  likedBy: [
     {
       type: Schema.Types.ObjectId,
       ref: 'User',
     }
   ],
-  Migration: [
+  migration: [
     {
       type: String,
       enum: migrationPatterns,
