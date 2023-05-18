@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/client";
 // import "../componentStyles/birdProfile.css";
 
+import { useMutation, useQuery } from "@apollo/client";
+
 import { ADD_POST } from "../../utils/mutations";
-import { QUERY_POSTS, QUERY_ME } from "../../utils/queries";
+import { QUERY_POSTS } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
 
@@ -14,6 +15,8 @@ const PostForm = () => {
 
   // state for counting the characters in the post
   const [characterCount, setCharacterCount] = useState(0);
+  const {loading, data} = useQuery(QUERY_POSTS);
+  console.log(data)
 
   const [addPost, { error }] = useMutation(ADD_POST, {
     // mutation to add a new post
@@ -28,25 +31,17 @@ const PostForm = () => {
       } catch (e) {
         console.error(e);
       }
-
-      // update the "me" object's cache with the new post
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, posts: [...me.posts, addPost] } },
-      });
     },
   });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(data)
 
     try {
       const { data } = await addPost({
         variables: {
-          postText,
-          // get the username from the authenticated user's profile
-          postAuthor: Auth.getProfile().data.username,
+          postText
         },
       });
       // clear the post text after submitting

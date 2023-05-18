@@ -62,8 +62,7 @@ const resolvers = {
     addPost: async (parent, { postText }, context) => {
       if (context.user) {
         const post = await Post.create({
-          postText,
-          postAuthor: context.user.username,
+          postText
         });
 
         await User.findOneAndUpdate(
@@ -128,6 +127,23 @@ const resolvers = {
       }
       throw new AuthenticationError("You need to be logged in!");
     },
+    likeUser: async (parent, { userId, likedUserId }, context) => {
+      if (context.user && context.user._id === userId) {
+          const updatedUser = await User.findByIdAndUpdate(
+              userId,
+              { $addToSet: { likes: likedUserId } },
+              { new: true }
+          ).populate("birdname").populate("img");
+
+          return updatedUser;
+      }
+      
+      throw new AuthenticationError("You need to be logged in!");
+  },
+    likedByUser: async (parent, { userId, likedById }, { dataSources }) => {
+      const updatedUser = await dataSources.userAPI.likeUser(userId, likedById);
+      return updatedUser;
+    }
   },
 };
 
