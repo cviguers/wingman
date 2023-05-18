@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
-import '../component styles/welcome.css';
+import '../componentStyles/welcome.css';
 import Popup from '../components/Popup.js';
+import PopupTwo from '../components/PopupTwo';
 
 const Welcome = () => {
   const [showPopup, setShowPopup] = useState(false);
+  const [showPopupTwo, setShowPopupTwo] = useState(false);
+
 
   useEffect(() => {
     const carouselImages = document.querySelectorAll('.c-img');
@@ -27,6 +30,11 @@ const Welcome = () => {
     const togglePopup = () => {
       setShowPopup(!showPopup);
   };
+
+  const togglePopupTwo = () => {
+    setShowPopupTwo(!showPopupTwo);
+  };
+  
   
   
 
@@ -34,7 +42,7 @@ const Welcome = () => {
     <section className='layout'>
           <div className="header">
             <img src="../imgs/P3-logo.png" alt="wingman logo"/>
-            <button>Sign in</button>
+            <button onClick={togglePopupTwo}>Log in</button>
           </div>
           <div className="leftSide">
             <h1>READY TO SPREAD YOUR WINGS AND FLY?</h1>
@@ -77,6 +85,8 @@ const Welcome = () => {
             </ul>
           </div>
           {showPopup && <Popup onClose={togglePopup} />} {/* Render the Popup component conditionally based on showPopup state */}
+          {showPopupTwo && <PopupTwo onClose={togglePopupTwo} />}
+
     </section>
   );
 }

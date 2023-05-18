@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Routes, Route, useNavigate } from "react-router-dom";
 
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
@@ -7,6 +7,9 @@ import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
 
 const Signup = () => {
+
+  const navigate = useNavigate();
+
   // state for storing the form data
   const [formState, setFormState] = useState({
     username: "",
@@ -41,9 +44,14 @@ const Signup = () => {
 
       // log in the user by saving the token to localStorage
       Auth.login(data.addUser.token);
+      // navigate("/dashboard");
+
     } catch (e) {
       console.error(e);
-    }
+    }   
+      
+    
+    
   }; // function for handling the form submission
 
   return (
