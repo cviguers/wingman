@@ -29,7 +29,6 @@ export const ADD_POST = gql`
     addPost(postText: $postText) {
       _id
       postText
-      postAuthor
       createdAt
       comments {
         _id

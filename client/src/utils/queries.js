@@ -38,7 +38,6 @@ export const QUERY_POSTS = gql`
     posts(username: $username) {
       _id
       createdAt
-      postAuthor
       postText
     }
   }

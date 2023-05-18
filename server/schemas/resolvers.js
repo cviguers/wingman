@@ -62,8 +62,7 @@ const resolvers = {
     addPost: async (parent, { postText }, context) => {
       if (context.user) {
         const post = await Post.create({
-          postText,
-          postAuthor: context.user.username,
+          postText
         });
 
         await User.findOneAndUpdate(
