@@ -1,36 +1,9 @@
 import React from "react";
-import Card from "../components/Card";
+import UserList from '../components/UserList/index'
 import { Link } from "react-router-dom";
 import '../componentStyles/welcome.css';
 
 const Dashboard = () => {
-  const cardData = [
-    {
-      photo: "../imgs/eagle.png",
-      title: "Bird ID Random",
-      description: "Description for Card 1",
-      blurb: "some more info for the card",
-    },
-    {
-      photo: "../imgs/gull.png",
-      title: "Bird ID Random",
-      description: "Description for Card 2",
-      blurb: "some more info for the card",
-    },
-    {
-      photo: "../imgs/gull.png",
-      title: "Bird ID Random",
-      description: "Description for Card 2",
-      blurb: "some more info for the card",
-    },
-    {
-      photo: "../imgs/gull.png",
-      title: "Bird ID Random",
-      description: "Description for Card 2",
-      blurb: "some more info for the card",
-    },
-  ];
-
   return (
     <section className="layout">
       <div className="header">
@@ -57,18 +30,7 @@ const Dashboard = () => {
       </div>
       <div className="content">
         <h1>Featured Birds</h1>
-        <ul className="card-list">
-          {cardData.map((card, index) => (
-            <li key={index}>
-              <Card
-                photo={card.photo}
-                title={card.title}
-                description={card.description}
-                blurb={card.blurb}
-              />
-            </li>
-          ))}
-        </ul>
+          <UserList className='card-list' />
       </div>
       <div className="footer1">
         <h1>
