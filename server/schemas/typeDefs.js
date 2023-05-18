@@ -58,6 +58,7 @@ const typeDefs = gql`
 
   type Subscription {
     onLikeReceived(userId: ID!): User!
+  }
 `;
 
 module.exports = typeDefs;
