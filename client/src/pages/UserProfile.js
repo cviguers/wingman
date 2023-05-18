@@ -1,6 +1,7 @@
 import React from "react";
 import "../componentStyles/userProfile.css";
 import { Link } from "react-router-dom";
+import PostForm from "../components/PostForm";
 
 const UserProfile = () => {
   // Sample user data
@@ -20,6 +21,9 @@ const UserProfile = () => {
         </Link>
         <Link to="/user-profile">
           <button className="ac-btn">Account</button>
+        </Link>
+        <Link to="/dashboard">
+          <button className="db-btn">Dashboard</button>
         </Link>
         <Link to="/">
         <button>Log out</button>
@@ -48,6 +52,10 @@ const UserProfile = () => {
           </div>
         </div>
         <button className="upd-btn">Update Profile</button>
+        <div className="th-form">
+         <h1>Post your thoughts!</h1> 
+        <PostForm/>
+        </div>
       </div>
       
       <div className="footer1">
