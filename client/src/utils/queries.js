@@ -76,3 +76,12 @@ export const QUERY_ME = gql`
     }
   }
 `;
+
+export const GET_USER_LIKES = gql`
+query GetUserLikes($id: ID!) {
+  getUserLikes(id: $id) {
+    birdname
+    img
+  }
+}
+`;
