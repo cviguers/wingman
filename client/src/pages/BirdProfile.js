@@ -22,7 +22,9 @@ const BirdProfile = () => {
         <Link to="/user-profile">
           <button className="ac-btn">Account</button>
         </Link>
+        <Link to="/">
         <button>Log out</button>
+        </Link>
       </div>
       <div className="leftSide">
         <h1>not sure what to put here</h1>

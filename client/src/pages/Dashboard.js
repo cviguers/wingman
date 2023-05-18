@@ -40,7 +40,9 @@ const Dashboard = () => {
         <Link to="/user-profile">
         <button className="ac-btn">Account</button>
         </Link>
+        <Link to="/">
         <button>Log out</button>
+        </Link>
       </div>
       <div className="leftSide">
         <h1>Search section goes here</h1>
