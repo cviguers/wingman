@@ -1,10 +1,10 @@
 .leftSide { 
-    background-color: white;
+    background-color: rgb(234, 128, 238);
     grid-area: leftSide; 
     margin-top: 0;
     margin-left: 0;
     margin-right: 0%;
-    color: rgb(32, 32, 32);
+    color: rgb(255, 255, 255);
  }
 
  .leftSide h1{
@@ -24,7 +24,8 @@
 }
 
 .leftSide button{
-    background-color: rgb(251, 141, 255);
+    background-color: rgb(255, 255, 255);
+    color: black;
     border: none;
     font-family: futura-pt, sans-serif;
     font-size: large;
@@ -37,10 +38,15 @@
 }
 
 .user-profile {
-    background-color: white;
     display: flex;
     flex-direction: column;
     padding: 20px;
+    color: white;
+  }
+
+  .bio-p{
+    margin-right: 400px;
+    line-height: 20px;
   }
   
   .profile-header {
@@ -73,7 +79,7 @@
   
   .profile-details p {
     font-size: 16px;
-    color: rgb(37, 37, 37);
+    color: rgb(255, 255, 255);
   }
 
   .upd-btn {
@@ -87,6 +93,21 @@
     padding: 15px 30px 15px 30px;
     border-radius: 10px;
     margin-top: 100px;
+    margin-left: 0px;
+  }
+
+  .pst-btn {
+    background-color: white;
+    color: rgb(251, 141, 255);
+    border: none;
+    align-items: right !important;
+    width: 200px;
+    font-size: large;
+    font-weight: 700;
+    font-style: normal;
+    padding: 15px 30px 15px 30px;
+    border-radius: 10px;
+    margin-top: 10px;
     margin-left: 0px;
   }
   

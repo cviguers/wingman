@@ -6,11 +6,11 @@ import PostForm from "../components/PostForm";
 const BirdProfile = () => {
   // Sample user data
   const user = {
-    name: "John Doe",
-    age: 25,
-    location: "New York",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer consectetur urna id mattis convallis.",
-    profileImage: "../imgs/profile-image.jpg",
+    name: "Legal Eagle",
+    age: 3,
+    location: "Great Smokey Mountains National Park",
+    bio: "I'm an active bird who loves the outdoors. Hiking, Hunting and a good sunset are all I need...except for you. LF other birds of prey, nothing serious. If you're looking to fly around in the majestic skies of the eastern United States then HMU and we can migrate together. I Dont like the brag but I'm kind of a big deal.",
+    profileImage: "../imgs/eagle.png",
   };
 
   return (
@@ -43,10 +43,9 @@ const BirdProfile = () => {
           </div>
           <div className="profile-details">
             <h2>About Me</h2>
-            <p>{user.bio}</p>
+            <p className="bio-p">{user.bio}</p>
           </div>
         </div>
-        <button className="upd-btn">Add Comment</button>
         <PostForm/>
       </div>
       

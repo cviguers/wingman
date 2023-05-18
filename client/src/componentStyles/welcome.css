@@ -52,6 +52,7 @@
 }
 
   .leftSide { 
+   background-color: rgb(234, 128, 238);
    grid-area: leftSide; 
    margin-top: 0;
    margin-left: 120px;
