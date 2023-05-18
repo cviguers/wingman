@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import AuthService from "./utils/Auth";
+import AuthService from "../../utils/auth";
 
 function LoveCalculator() {
   const [lovePercentage, setLovePercentage] = useState(null);
@@ -8,14 +8,14 @@ function LoveCalculator() {
   const [userName, setUserName] = useState(AuthService.getName());
   const [viewedProfile, setViewedProfile] = useState("");
 
-  // Extract profile ID from the URL
+  // Extract User ID from the URL
   const { id } = useParams();
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const response = await fetch(`/profile/${id}`);
         const data = await response.json();
-        setViewedProfile(data.name);
+        setViewedProfile(data.birdname);
         setError(null);
       } catch (error) {
         console.error(error);
@@ -63,4 +63,5 @@ function LoveCalculator() {
     </div>
   );
 }
+
 export default LoveCalculator;

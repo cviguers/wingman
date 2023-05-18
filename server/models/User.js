@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const migrationPatterns = require('../seeders/birdMigratoryPatterns')
 
 const userSchema = new Schema({
   birdname: {
@@ -38,6 +39,25 @@ const userSchema = new Schema({
       ref: 'Post',
     },
   ],
+  Likes: [
+    {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
+  ],
+  LikedBy: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ],
+  Migration: [
+    {
+      type: String,
+      enum: migrationPatterns,
+    }
+  ]
+
 });
 
 // set up pre-save middleware to create password

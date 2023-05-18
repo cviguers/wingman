@@ -11,6 +11,8 @@ const typeDefs = gql`
     email: String
     password: String
     posts: [Post]!
+    likedBy: [ID!]!
+    Likes: [ID!]!
   }
 
   type Post {
@@ -35,7 +37,8 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    user(username: String!): User
+    user(id: ID!): User
+    getUserLikes(id: ID!): [User!]!
     posts(username: String): [Post]
     post(postId: ID!): Post
     me: User
@@ -43,12 +46,18 @@ const typeDefs = gql`
   
   type Mutation {
     addUser(username: String!, email: String!, birdname: String!, password: String!): Auth
+    likeUser(userId: ID!, likedUserId: ID!): User
+    likedByUser(userId: ID!, likedById: ID!): User
     login(email: String!, password: String!): Auth
     addPost(postText: String!): Post
     addComment(postId: ID!, commentText: String!): Post
     removePost(postId: ID!): Post
     removeComment(postId: ID!, commentId: ID!): Post
+    
   }
+
+  type Subscription {
+    onLikeReceived(userId: ID!): User!
 `;
 
 module.exports = typeDefs;

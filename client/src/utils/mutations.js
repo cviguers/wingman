@@ -62,3 +62,24 @@ mutation RemovePost($postId: ID!) {
   }
 }
 `;
+
+export const LIKE_USER = gql`
+  mutation LikeUser($userId: ID!, $likedUserId: ID!) {
+    likeUser(userId: $userId, likedUserId: $likedUserId)
+  }
+`;
+
+export const LIKED_BY_USER = gql`
+  mutation LikedByUser($userId: ID!, $likedByUserId: ID!) {
+    likedByUser(userId: $userId, likedByUserId: $likedByUserId)
+  }
+`;
+
+export const NEW_LIKE_RECEIVED = gql`
+  subscription onLikeReceived($userId: ID!) {
+    onLikeReceived(userId: $userId) {
+      birdname
+      img
+    }
+  }
+`;
