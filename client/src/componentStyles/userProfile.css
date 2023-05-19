@@ -1,117 +1,94 @@
 .leftSide { 
     background-color: rgb(234, 128, 238);
     grid-area: leftSide; 
-    margin-top: 0;
-    margin-left: 0;
-    margin-right: 0%;
+    margin: 0 0 0 0%;
     color: rgb(255, 255, 255);
  }
-
  .leftSide h1{
     font-family: futura-pt, sans-serif;
     font-size: large;
     font-weight: 700;
-    font-style: normal;
     padding-left: 80px;
     margin-top: 48px;
  }
-
-.leftSide p {
+ .leftSide p {
     font-family: futura-pt, sans-serif;
     font-weight: 600;
-    font-style: normal;
     padding-left: 80px;
 }
-
-.leftSide button{
+ .leftSide button{
     background-color: rgb(255, 255, 255);
     color: black;
     border: none;
     font-family: futura-pt, sans-serif;
     font-size: large;
     font-weight: 700;
-    font-style: normal;
-    padding: 15px 30px 15px 30px;
+    padding: 15px 30px;
     border-radius: 10px;
-    margin-top: 100px;
-    margin-left: 80px;
+    margin: 100px 0 0 80px;
+    cursor: pointer;
 }
-
-.user-profile {
+ .user-profile {
     display: flex;
     flex-direction: column;
     padding: 20px;
     color: white;
   }
-
-  .bio-p{
+   .bio-p{
     margin-right: 400px;
     line-height: 20px;
   }
-  
-  .profile-header {
+   .profile-header {
     text-align: left;
     margin-bottom: 20px;
   }
-  
-  .profile-content {
+   .profile-content {
     display: flex;
     flex-direction: column;
     align-items: left;
   }
-  
-  .profile-image img {
+   .profile-image img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 20px;
   }
-  
-  .profile-details {
+   .profile-details {
     text-align: left;
   }
-  
-  .profile-details h2 {
+   .profile-details h2 {
     font-size: 20px;
     margin-bottom: 10px;
   }
-  
-  .profile-details p {
+   .profile-details p {
     font-size: 16px;
     color: rgb(255, 255, 255);
     margin-right: 200px;
     line-height: 20px;
   }
-
-  .upd-btn {
-    background-color: rgb(255, 255, 255);
-    color: rgb(251, 141, 255);
+   .upd-btn, .pst-btn, .dlt-btn {
+    background-color: white;
+    color: black;
     border: none;
     align-items: right !important;
     width: 200px;
     font-size: large;
     font-weight: 700;
     font-style: normal;
-    padding: 15px 30px 15px 30px;
+    padding: 15px 30px;
     border-radius: 10px;
     margin-top: 10px;
     margin-left: 0px;
+    cursor: pointer;
+  }
+   .upd-btn {
     margin-right: 200px;
   }
-
-  .pst-btn {
-    background-color: white;
-    color: rgb(251, 141, 255);
-    border: none;
-    align-items: right !important;
-    width: 200px;
-    font-size: large;
-    font-weight: 700;
-    font-style: normal;
-    padding: 15px 30px 15px 30px;
-    border-radius: 10px;
-    margin-top: 10px;
-    margin-left: 0px;
+   .pst-btn {
+    margin-right: 200px;
   }
-  
+   .dlt-btn {
+    background-color: red;
+    margin-right: 200px;
+  }

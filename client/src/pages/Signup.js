@@ -62,7 +62,7 @@ const Signup = () => {
           // if there is data (successful signup)
           <p>
             you're logged in! you can fly back{" "}
-            <Link to="/">to the homepage here.</Link>
+            <Link to="/dashboard">to the homepage here.</Link>
           </p>
         ) : (
           // if there is no data (signup form)

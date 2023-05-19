@@ -1,18 +1,18 @@
 import React from 'react';
-import Signup from '../pages/Signup';
+import Login from '../../pages/Login';
 
-const Popup = ({ onClose }) => {
+const LoginPop = ({ onClose }) => {
   return (
     <div className="popup">
       <div className="popup-content">
         <button className="close-button" onClick={onClose}>
           Close
         </button>
-        <h2>Tell Us About Yourself</h2>
-        <Signup />
+        <h2>Nice To Have You Back</h2>
+        <Login />
       </div>
     </div>
   );
 };
 
-export default Popup;
+export default LoginPop;
