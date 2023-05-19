@@ -1,29 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_USERS } from "../../utils/queries";
 import AuthService from "../../utils/auth";
 
 function LoveCalculator() {
   const [lovePercentage, setLovePercentage] = useState(null);
-  const [error, setError] = useState(null);
   const [userName, setUserName] = useState(AuthService.getName());
   const [viewedProfile, setViewedProfile] = useState("");
 
   // Extract User ID from the URL
   const { id } = useParams();
+
+  const { loading, error, data } = useQuery(QUERY_USERS);
+
   useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await fetch(`/profile/${id}`);
-        const data = await response.json();
-        setViewedProfile(data.birdname);
-        setError(null);
-      } catch (error) {
-        console.error(error);
-        setError("An error occurred while fetching the profile.");
-      }
-    };
-    fetchProfile();
-  }, [id]);
+    let bird;
+    if (data) {
+      data.users.forEach((user) => {
+        if (user._id === id) {
+          bird = user;
+        }
+      });
+      setViewedProfile(bird.birdname);
+    }
+  }, [id, data]);
   
   useEffect(() => {
     const fetchLovePercentage = async () => {
@@ -41,16 +42,15 @@ function LoveCalculator() {
         const result = await response.text();
         const data = JSON.parse(result);
         setLovePercentage(data.percentage);
-        setError(null);
       } catch (error) {
         console.error(error);
-        setError("An error occurred while fetching the love percentage.");
       }
     };
-    if (viewedProfile) {
+    
       fetchLovePercentage();
-    }
+    
   }, [viewedProfile, userName]);
+  if (loading) return <p>Loading...</p>;
   if (error) {
     return <div>{error}</div>;
   } else if (lovePercentage === null) {
@@ -58,8 +58,9 @@ function LoveCalculator() {
   }
   return (
     <div>
-      The love potential with {viewedProfile} is{" "}
-      {lovePercentage}%!
+      <h2>&hearts; Love Calculator &hearts;</h2>
+      <p>The love potential with {viewedProfile} is{" "}
+      {lovePercentage}%!</p>
     </div>
   );
 }

@@ -24,6 +24,26 @@ mutation AddUser($username: String!, $email: String!, $birdname: String!, $passw
 }
 `;
 
+export const UPDATE_USER = gql`
+  mutation updateUser($userId: ID!, $birdname: String, $img: String, $quote: String) {
+    updateUser(userId: $userId, birdname: $birdname, img: $img, quote: $quote) {
+      _id
+      birdname
+      img
+      quote
+    }
+  }
+`;
+
+export const DELETE_USER = gql`
+mutation DeleteUser($userId: ID!) {
+  deleteUser(userId: $userId) {
+    email
+    birdname
+  }
+}
+`;
+
 export const ADD_POST = gql`
   mutation addPost($postText: String!) {
     addPost(postText: $postText) {

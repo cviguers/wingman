@@ -20,8 +20,8 @@ module.exports = {
 
     // if token can be verified, add the decoded user's data to the request so it can be accessed in the resolver
     try {
-      const { data } = jwt.verify(token, secret, { maxAge: expiration });
-      req.user = data;
+      const { data: { email, birdname, _id } } = jwt.verify(token, secret, { maxAge: expiration });
+      req.user = { email, birdname, _id };
     } catch {
       console.log('Invalid token');
     }
@@ -29,8 +29,8 @@ module.exports = {
     // return the request object so it can be passed to the resolver as `context`
     return req;
   },
-  signToken: function ({ email, name, _id }) {
-    const payload = { email, name, _id };
+  signToken: function ({ email, birdname, _id }) {
+    const payload = { email, birdname, _id };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 };

@@ -1,66 +1,66 @@
 import React from "react";
-import UserList from '../components/UserList/index'
-import { Link } from "react-router-dom";
-import '../componentStyles/welcome.css';
+import UserList from "../components/UserList/index";
+import "../componentStyles/welcome.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const Dashboard = () => {
   return (
     <section className="layout">
-      <div className="header">
-      <Link to="/">
-        <img src="../imgs/P3-logo.png" alt="wingman logo" />
-        </Link>
-        <Link to="/user-profile">
-        <button className="ac-btn">Account</button>
-        </Link>
-        <Link to="/dashboard">
-          <button className="db-btn">Dashboard</button>
-        </Link>
-        <Link to="/">
-        <button>Log out</button>
-        </Link>
-      </div>
-      <div className="leftSide">
-        <h1>Search section goes here</h1>
-        <p>I'm thinking it will make a pop up window like the sign in</p>
-        <p>
-          With more cards like the feature cards.
-        </p>
-        <button>SEARCH</button>
-      </div>
+      <Header />
       <div className="content">
         <h1>Featured Birds</h1>
-          <UserList className='card-list' />
+        <UserList className="card-list" />
       </div>
-      <div className="footer1">
-        <h1>
-          "Chirp cheep. Chirp chirp chip chirp, cheep chirp. Chirpy cheep chirp
-          chip."
-        </h1>
-        <span></span>
-        <p>- A Birb</p>
-      </div>
-      <div className="footer2">
-        <ul>
-          <li>
-            <h1>
-              “Bawk Bawk. Wark Bawk buck buck bawk. Bawk buck buck buck
-              buckaaaaaw!”
-            </h1>
-            <span></span>
-            <p>- Chic Ken</p>
-          </li>
-          <li>
-            <h1>
-              “Im so glad that I took the chance with WINGMAN! I found the love
-              of my Squack ”
-            </h1>
-            <span></span>
-            <p>- Ruffles the Parrot</p>
-          </li>
-        </ul>
-      </div>
+      <Footer />
     </section>
   );
 };
 export default Dashboard;
+
+// import React from "react";
+// import UserList from "../components/UserList/index";
+// import "../componentStyles/welcome.css";
+// import { useState } from "react";
+// import { useQuery } from "@apollo/client";
+// import { QUERY_USERS } from "../utils/queries";
+// import Header from "../components/Header";
+// import Footer from "../components/Footer";
+// import MigrationPatternSelect from "../components/MigrationSelectBar";
+
+// const Dashboard = () => {
+//   const [selectedMigration, setSelectedMigration] = useState(null);
+
+//   const { loading, error, data } = useQuery(QUERY_USERS);
+
+//   if (loading) return <p>Loading...</p>;
+//   if (error) return <p>Error: {error.message}</p>;
+
+//   const getFilteredUsers = (migrationPattern, data) => {
+//     if (!data || !data.users) return [];
+//     const filteredUsers = data.users.filter((user) => {
+//       return user.Migration === migrationPattern;
+//     });
+//     return filteredUsers;
+//   };
+
+//   const filteredUsers = getFilteredUsers(selectedMigration, data);
+
+//   return (
+//     <section className="layout">
+//       <Header />
+//       <div className="content">
+//         <h1>Featured Birds</h1>
+//         <div>
+//           <MigrationPatternSelect
+//             selectedMigration={selectedMigration}
+//             setSelectedMigration={setSelectedMigration}
+//           />
+//           <UserList className="card-list" users={filteredUsers} />
+//         </div>
+//       </div>
+//       <Footer />
+//     </section>
+//   );
+// };
+// export default Dashboard;

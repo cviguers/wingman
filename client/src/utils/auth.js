@@ -1,8 +1,28 @@
 import decode from 'jwt-decode';
 
 class AuthService {
-  getProfile() {
+  getUser() {
     return decode(this.getToken());
+  }
+
+  getUserId() {
+    // Check if the 'user_id' value is set in the localStorage
+    const id = localStorage.getItem('_id');
+    if (!id) {
+      console.warn("'user_id' value is not set in the localStorage");
+      return null;
+    }
+    return id;
+  }
+
+  getName() {
+    // Check if the 'birdname' value is set in the localStorage
+    const name = localStorage.getItem('birdname');
+    if (!name) {
+      console.warn("'birdname' value is not set in the localStorage");
+      return null;
+    }
+    return name;
   }
 
   loggedIn() {
@@ -28,7 +48,12 @@ class AuthService {
   }
 
   login(idToken) {
+    const decodedToken = decode(idToken);
+    console.log('Decoded token:', decodedToken);
     localStorage.setItem('id_token', idToken);
+    localStorage.setItem('_id', decodedToken.data._id);
+    localStorage.setItem('birdname', decodedToken.data.birdname);
+    console.log(decodedToken.data._id)
     window.location.assign('/dashboard');
   }
 

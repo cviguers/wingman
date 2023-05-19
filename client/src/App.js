@@ -1,5 +1,6 @@
 import React from "react";
 
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -43,7 +44,6 @@ const client = new ApolloClient({
 });
 
 // Inside our App component, we have a return method that contains all the JSX we want to render to the screen.
-// In this example, we have a parent `div` that references the Welcome component that we imported at the top.
 
  function App() {
   return (
@@ -53,8 +53,8 @@ const client = new ApolloClient({
           <Route exact path="/" element={<Welcome />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/user-profile" element={<UserProfile />} />
-          <Route path="/bird-profile" element={<BirdProfile />} />
+          <Route path={`/account/:id`} element={<UserProfile />} />
+          <Route path="/bird/:id" element={<BirdProfile />} />
         </Routes>
       </Router>
     </ApolloProvider>

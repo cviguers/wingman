@@ -25,7 +25,7 @@ const generateUserData = async (usedNames) => {
 
   // Generate image
   const imgURL =
-    "https://api.unsplash.com/photos/random?query=Bird&client_id=WRoEDY4c-F5JQrvWZAOc-msgmPeGM6ge71fIALwUiys";
+    "https://api.unsplash.com/photos/random?query=Bird&client_id=_fkWGCKcNRrOzBAw-Wg0EOkAuxa75TsXyMamY6fx0I8";
   const imgResponse = await fetch(imgURL);
   const imgData = await imgResponse.json();
   const randomImg = imgData.urls.regular;
@@ -74,23 +74,3 @@ const seedUsers = async (numUsers) => {
 db.once("open", async () => {
   seedUsers(10);
 });
-
-//     for (let i = 0; i < postSeeds.length; i++) {
-//       const { _id, postAuthor } = await Post.create(postSeeds[i]);
-//       const user = await User.findOneAndUpdate(
-//         { username: postAuthor },
-//         {
-//           $addToSet: {
-//             post: _id,
-//           },
-//         }
-//       );
-//     }
-//   } catch (err) {
-//     console.error(err);
-//     process.exit(1);
-//   }
-
-//   console.log('seeded!');
-//   process.exit(0);
-// });

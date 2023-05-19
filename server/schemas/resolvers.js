@@ -5,7 +5,7 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
   // read data from the db
   Query: {
-    // get all users and populate their username and img
+    // get all users
     users: async () => {
       const findUser = await User.find({});
       console.log(findUser)
@@ -41,6 +41,21 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
+    async updateUser(parent, args, ctx, info) {
+      const { userId, ...userData } = args;
+      const user = await User.findByIdAndUpdate(userId, userData, { new: true });
+
+      return user;
+    },
+
+    deleteUser: async (parent, { userId }, context) => {
+        const user = await User.findOneAndDelete({
+          _id: userId,
+        });
+
+        return user;
+      },
 
     // login a user, sign a token, and send it back (to client/src/pages/login.js)
     login: async (parent, { email, password }) => {

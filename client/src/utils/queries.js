@@ -6,13 +6,15 @@ export const QUERY_USERS = gql`
       _id
       birdname
       img
+      quote
+      migration
     }
   }
 `;
 
 export const QUERY_SINGLE_USER = gql`
-  query User($username: String!) {
-    user(username: $username) {
+  query User($userId: ID!) {
+    user(userId: $userId) {
       _id
       birdname
       username

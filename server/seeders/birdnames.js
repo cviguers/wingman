@@ -42,7 +42,7 @@ const birdNames = [
     'Early Bird', 
     'Feather Locklear', 
     'Tweetheart', 
-    'Migrator Master-Baiter', 
+    'Optimus Prime', 
     'Hummin Birb', 
     'Cat', 
     'Dog',

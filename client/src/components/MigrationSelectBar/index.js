@@ -1,25 +1,33 @@
-const User = require('../../../../server/models/User');
- function MigrationPatternSelect() {
+import { QUERY_USERS } from "../../utils/queries";
+import { useQuery } from "@apollo/client";
+
+function MigrationPatternSelect() {
+
+  const { loading, error, data } = useQuery(QUERY_USERS);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
   const migrationPatternOptions = [
-    '',
-    'New Zealand to Alaska',
-    'Arctic to Antarctic and Back',
-    'Eastern United States to Central America',
-    'Northern Europe to the Mediterranean',
-    'North America to South America',
-    'North and South America to the Caribbean',
-    'Europe to Africa',
-    'Southern South America to the Arctic',
-    'New Zealand to Alaska and Siberia',
-    'North America to Central America'
+    "Pick A Migration Pattern!",
+    "New Zealand to Alaska",
+    "Arctic to Antarctic and Back",
+    "Eastern United States to Central America",
+    "Northern Europe to the Mediterranean",
+    "North America to South America",
+    "North and South America to the Caribbean",
+    "Europe to Africa",
+    "Southern South America to the Arctic",
+    "New Zealand to Alaska and Siberia",
+    "North America to Central America",
   ];
-   const handleSelectChange = async (event) => {
+
+  const handleSelectChange = (event) => {
     const migrationPattern = event.target.value;
-    const users = await getFilteredUsers(migrationPattern);
+    const filteredUsers = getFilteredUsers(migrationPattern, data);
     // display the filtered users
   };
-   return (
-    <div>
+  return (
+    <div className="leftSide">
       <select id="migration-pattern-select" onChange={handleSelectChange}>
         {migrationPatternOptions.map((option, index) => (
           <option key={index} value={option}>
@@ -30,8 +38,12 @@ const User = require('../../../../server/models/User');
     </div>
   );
 }
- async function getFilteredUsers(migrationPattern) {
-  const query = migrationPattern ? { Migration: migrationPattern } : {};
-  const users = await User.find(query);
-  return users;
-}
+
+const getFilteredUsers = (migrationPattern, data) => {
+  if (!data || !data.users) return [];
+  const filteredUsers = data.users.filter((user) => {
+    return user.Migration === migrationPattern;
+  });
+  return filteredUsers;
+};
+export default MigrationPatternSelect;
