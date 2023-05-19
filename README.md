@@ -11,7 +11,7 @@ To install this application, first clone the repository to your local machine fr
 ## Usage
 
 To use the application, simply open this link in your browser of choice!
-* heroku link here
+* [deployed heroku application: ](https://quiet-meadow-98793.herokuapp.com/)
 
 You will be land on our home page and be able to create an account or log in from there. Please take a look at all the profiles that our fellow feathered creatures already created!
 
