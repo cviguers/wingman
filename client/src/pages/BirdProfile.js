@@ -25,7 +25,7 @@ const BirdProfile = () => {
     }
   });
   return (
-    <section className="layout">
+   <section className="layout">
       <Header />
       <div className="user-profile">
         <div className="profile-header">

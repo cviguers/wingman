@@ -64,7 +64,7 @@ const PostForm = () => {
 
   return (
     <div>
-      <h3>Add A Comment!</h3>
+      <h3>Chirp Away!</h3>
 
       {Auth.loggedIn() ? (
         // if the user is logged in
@@ -93,7 +93,7 @@ const PostForm = () => {
 
             <div className="col-12 col-lg-3">
               <button className="pst-btn" type="submit">
-                submit
+                Submit
               </button>
             </div>
             {error && (
